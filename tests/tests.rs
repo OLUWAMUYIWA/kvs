@@ -4,11 +4,13 @@ use predicates::str::contains;
 use std::process::Command;
 
 // `kvs` with no args should exit with a non-zero code.
+//done
 #[test]
 fn cli_no_args() {
     Command::cargo_bin("kvs").unwrap().assert().failure();
 }
 
+//done
 // `kvs -V` should print the version
 #[test]
 fn cli_version() {
@@ -19,6 +21,7 @@ fn cli_version() {
         .stdout(contains(env!("CARGO_PKG_VERSION")));
 }
 
+//done
 // `kvs get <KEY>` should print "unimplemented" to stderr and exit with non-zero code
 #[test]
 fn cli_get() {
@@ -30,6 +33,7 @@ fn cli_get() {
         .stderr(contains("unimplemented"));
 }
 
+//done
 // `kvs set <KEY> <VALUE>` should print "unimplemented" to stderr and exit with non-zero code
 #[test]
 fn cli_set() {
@@ -52,6 +56,7 @@ fn cli_rm() {
         .stderr(contains("unimplemented"));
 }
 
+//done
 #[test]
 fn cli_invalid_get() {
     Command::cargo_bin("kvs")
@@ -67,6 +72,7 @@ fn cli_invalid_get() {
         .failure();
 }
 
+//done
 #[test]
 fn cli_invalid_set() {
     Command::cargo_bin("kvs")
@@ -88,6 +94,7 @@ fn cli_invalid_set() {
         .failure();
 }
 
+//done
 #[test]
 fn cli_invalid_rm() {
     Command::cargo_bin("kvs")
@@ -103,6 +110,7 @@ fn cli_invalid_rm() {
         .failure();
 }
 
+//done
 #[test]
 fn cli_invalid_subcommand() {
     Command::cargo_bin("kvs")
@@ -112,6 +120,7 @@ fn cli_invalid_subcommand() {
         .failure();
 }
 
+//done
 // Should get previously stored value
 #[test]
 fn get_stored_value() {
@@ -124,6 +133,7 @@ fn get_stored_value() {
     assert_eq!(store.get("key2".to_owned()), Some("value2".to_owned()));
 }
 
+//done
 // Should overwrite existent value
 #[test]
 fn overwrite_value() {
@@ -136,6 +146,7 @@ fn overwrite_value() {
     assert_eq!(store.get("key1".to_owned()), Some("value2".to_owned()));
 }
 
+//done
 // Should get `None` when getting a non-existent key
 #[test]
 fn get_non_existent_value() {
@@ -145,6 +156,7 @@ fn get_non_existent_value() {
     assert_eq!(store.get("key2".to_owned()), None);
 }
 
+//done
 #[test]
 fn remove_key() {
     let mut store = KvStore::new();
