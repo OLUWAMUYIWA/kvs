@@ -30,29 +30,20 @@ fn main() {
                 .arg(Arg::with_name("key").index(1).required(true)),
         )
         .get_matches();
-    let mut store = KvStore::new();
 
     if matches.is_present("version") {
         println!("{:?}", version);
     }
     match matches.subcommand() {
         ("set", Some(sub_match)) => {
-            let key = sub_match.value_of("key").unwrap();
-            let value = sub_match.value_of("value").unwrap();
-            store.set(key.to_owned(), value.to_owned());
-            panic!("unimplemented");
+            todo!()
         }
 
         ("get", Some(sub_match)) => {
-            let key = sub_match.value_of("key").unwrap();
-            store.get(key.to_owned());
-            panic!("unimplemented");
-            //eprintln!("unimmplemented");
+            todo!()
         }
         ("rm", Some(sub_match)) => {
-            let key = sub_match.value_of("key").unwrap();
-            store.remove(key.to_owned());
-            panic!("unimplemented")
+            todo!()
         }
 
         _ => {}
